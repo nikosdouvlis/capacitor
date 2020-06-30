@@ -3,7 +3,6 @@ import { checkWebDir, logError, logFatal, logInfo, resolveNode, runTask } from '
 import { existsAsync } from '../util/fs';
 import { allSerial } from '../util/promise';
 import { copyWeb } from '../web/copy';
-import { copyElectron } from '../electron/copy';
 import { basename, join, relative, resolve } from 'path';
 import { copy as fsCopy, remove } from 'fs-extra';
 import { getCordovaPlugins, handleCordovaPluginsJS, writeCordovaAndroidManifest } from '../cordova';
@@ -45,9 +44,6 @@ export async function copy(config: Config, platformName: string) {
       await writeCordovaAndroidManifest(cordovaPlugins, config, platformName);
     } else if (platformName === config.web.name) {
       await copyWeb(config);
-    } else if (platformName === config.electron.name) {
-      await copyElectron(config);
-      await copyCapacitorConfig(config, config.electron.platformDir);
     } else {
       throw `Platform ${platformName} is not valid.`;
     }
