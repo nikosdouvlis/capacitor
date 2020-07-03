@@ -1699,6 +1699,19 @@ export interface ShareOptions {
    * Set a title for the share modal. Android only
    */
   dialogTitle?: string;
+  /**
+   * Set a file to share
+   */
+  file?: {
+    /**
+     * The base64 data string that will be used to create the file
+     */
+    fromBase64: string;
+    /**
+     * Set the filename the file will be shared with
+     */
+    fileName: string
+  }
 }
 
 //
